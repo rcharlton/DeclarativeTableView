@@ -14,6 +14,8 @@
 		007A88E52694BF2E00B5D8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007A88E42694BF2E00B5D8D5 /* Assets.xcassets */; };
 		007A88E82694BF2E00B5D8D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */; };
 		007A88F22694C7BD00B5D8D5 /* Bricolage in Frameworks */ = {isa = PBXBuildFile; productRef = 007A88F12694C7BD00B5D8D5 /* Bricolage */; };
+		007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F42694C89800B5D8D5 /* Reusable.swift */; };
+		007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		007A88E42694BF2E00B5D8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		007A88E72694BF2E00B5D8D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		007A88E92694BF2E00B5D8D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		007A88F42694C89800B5D8D5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,15 @@
 		007A88DA2694BF2C00B5D8D5 /* DeclarativeTableView */ = {
 			isa = PBXGroup;
 			children = (
+				007A88E92694BF2E00B5D8D5 /* Info.plist */,
 				007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */,
+				007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */,
+				007A88F42694C89800B5D8D5 /* Reusable.swift */,
 				007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */,
 				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
-				007A88E12694BF2C00B5D8D5 /* Main.storyboard */,
 				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
 				007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */,
-				007A88E92694BF2E00B5D8D5 /* Info.plist */,
+				007A88E12694BF2C00B5D8D5 /* Main.storyboard */,
 			);
 			path = DeclarativeTableView;
 			sourceTree = "<group>";
@@ -145,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */,
 				007A88E02694BF2C00B5D8D5 /* ViewController.swift in Sources */,
 				007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */,
+				007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */,
 				007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

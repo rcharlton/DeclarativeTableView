@@ -33,61 +33,61 @@ class ViewController: UIViewController {
 
 }
 
-protocol Reusable {
-    static var reuseIdentifier: String { get }
-}
-
-extension Reusable {
-    static var reuseIdentifier: String {
-        return String(describing: type(of: self))
-    }
-}
-
-extension UITableView {
-    func register<T: UITableViewCell>(_: T.Type) where T: Reusable {
-        register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
-    }
-
-    func dequeueReusableCell<T: UITableViewCell>(
-        type: T.Type,
-        for indexPath: IndexPath
-    ) -> T where T: Reusable {
-        guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Failed to dequeue cell: \(T.reuseIdentifier)")
-        }
-        return cell
-    }
-}
-
-//func tableView(
-//    _ collectionView: UITableView,
-//    cellForItemAt indexPath: IndexPath
-//) -> UITableViewCell {
-//    let cell: MyCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-//    cell.configure(with: myData(for: indexPath))
-//    return cell
-//}
-
-
-class MessageTableViewCell: UITableViewCell, Reusable {
-    func configure(message: String) {
-        textLabel?.text = message
-        textLabel?.adjustsFontSizeToFitWidth = true
-    }
-}
-
 class TableViewAdapter: NSObject, UITableViewDataSource {
 
+    let cellProviders: [TableViewCellProviding] = [
+        RowAdapter<MessageTableViewCell>(section: 0, rows: 0...9) { _ in "Hello world" }
+    ]
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function)
-        return 1
+        cellProviders
+            .filter { $0.section == section }
+            .reduce(0) { $0 + $1.count }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
-        let cell = tableView.dequeueReusableCell(type: MessageTableViewCell.self, for: indexPath)
-        cell.configure(message: "Hello")
-        return cell
+        let provider = cellProviders.first { $0.contains(indexPath: indexPath) }
+        return provider?.tableView(tableView, cellForRowAt: indexPath) ?? MessageTableViewCell()
     }
 
+}
+
+protocol StateRepresentable {
+    associatedtype State
+    var state: State { get }
+    func setState(_ state: State, animated isAnimated: Bool)
+}
+
+protocol TableViewCellProviding {
+    var section: Int { get }
+    var rows: ClosedRange<Int> { get }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+}
+
+extension TableViewCellProviding {
+    var count: Int {
+        rows.count
+    }
+
+    func contains(indexPath: IndexPath) -> Bool {
+        section == indexPath.section && rows.contains(indexPath.row)
+    }
+}
+
+class RowAdapter<TableViewCell: UITableViewCell & Reusable & StateRepresentable>: TableViewCellProviding {
+    let section: Int
+    let rows: ClosedRange<Int>
+    let state: (IndexPath) -> TableViewCell.State
+
+    init(section: Int, rows: ClosedRange<Int>, state: @escaping (IndexPath) -> TableViewCell.State) {
+        self.section = section
+        self.rows = rows
+        self.state = state
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withType: TableViewCell.self, for: indexPath)
+        cell.setState(state(indexPath), animated: false)
+        return cell
+    }
 }
