@@ -17,19 +17,20 @@ class ViewController: UIViewController {
     private let tableViewAdapter = configure(TableViewAdapter()) {
         $0.sections = [
             TableViewSectionProvider(
-                headerViewProvider: nil,
+                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 32){ (UIColor.orange, "First header") },
+                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 64){ (UIColor.gray, "First footer") },
                 cellProviders: [
-                    TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Hello" },
-                    TableViewCellProvider<NumberTableViewCell>(rows: 1...3) { $0.row },
-                    TableViewCellProvider<DateTableViewCell>(row: 4) { _ in Date() }
+                    TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Here are some number rows:" },
+                    TableViewCellProvider<NumberTableViewCell>(rows: 1...20) { $0.row },
+                    TableViewCellProvider<DateTableViewCell>(row: 21) { _ in Date() }
                 ]
             ),
             TableViewSectionProvider(
-                headerViewProvider: nil,
+                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 64){ (UIColor.orange, "Second header") },
+                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 64){ (UIColor.gray, "Second footer") },
                 cellProviders: [
-                    TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "There" },
-                    TableViewCellProvider<DateTableViewCell>(row: 1) { _ in Date().advanced(by: 24 * 60 * 60) },
-                    TableViewCellProvider<DateTableViewCell>(row: 2) { _ in Date().advanced(by: 2 * 24 * 60 * 60) }
+                    TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Another message cell" },
+                    TableViewCellProvider<DateTableViewCell>(rows: 1...10) { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }
                 ]
             )
         ]

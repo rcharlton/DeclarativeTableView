@@ -8,9 +8,9 @@
 import UIKit
 
 struct TableViewHeaderFooterViewProvider<View: ReusableTableViewHeaderFooterView & StateRepresentable>: TableViewHeaderFooterViewProviding {
-    let state: () -> View.State
-
     private(set) var viewHeight: CGFloat
+
+    let state: () -> View.State
 
     func register(with tableView: UITableView) {
         tableView.register(View.self)

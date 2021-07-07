@@ -23,6 +23,7 @@
 		007A89102695B0F800B5D8D5 /* TableViewCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */; };
 		007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */; };
 		007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */; };
+		007A89212695D90800B5D8D5 /* MyHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellProvider.swift; sourceTree = "<group>"; };
 		007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionProvider.swift; sourceTree = "<group>"; };
 		007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderFooterViewProvider.swift; sourceTree = "<group>"; };
+		007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeaderFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				007A88E92694BF2E00B5D8D5 /* Info.plist */,
 				007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */,
+				007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */,
 				007A88F42694C89800B5D8D5 /* Reusable.swift */,
 				007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */,
 				007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */,
@@ -187,6 +190,7 @@
 				007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */,
 				007A890D2695B07300B5D8D5 /* TableViewAdapter.swift in Sources */,
 				007A89102695B0F800B5D8D5 /* TableViewCellProvider.swift in Sources */,
+				007A89212695D90800B5D8D5 /* MyHeaderFooterView.swift in Sources */,
 				007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */,
 				007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */,
 				007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */,

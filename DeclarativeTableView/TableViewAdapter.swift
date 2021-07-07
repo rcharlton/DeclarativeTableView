@@ -8,7 +8,6 @@
 import UIKit
 
 class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
-
     var sections: [TableViewSectionProviding] = []
 
     func register(with tableView: UITableView) {
@@ -37,4 +36,11 @@ class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
         sections[indexPath.section].cellForRowAt(indexPath, with: tableView) ?? MessageTableViewCell()
     }
 
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        sections[section].footerView(with: tableView)
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        sections[section].footerViewHeight
+    }
 }
