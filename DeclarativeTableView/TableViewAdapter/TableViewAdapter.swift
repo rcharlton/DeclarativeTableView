@@ -25,11 +25,11 @@ class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        sections[section].headerView(with: tableView)
+        sections[section].headerViewForSectionAt(section, with: tableView)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        sections[section].headerViewHeight
+        sections[section].headerViewHeightForSectionAt(section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,10 +37,10 @@ class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        sections[section].footerView(with: tableView)
+        sections[section].footerViewForSectionAt(section, with: tableView)
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        sections[section].footerViewHeight
+        sections[section].footerViewHeightForSectionAt(section)
     }
 }

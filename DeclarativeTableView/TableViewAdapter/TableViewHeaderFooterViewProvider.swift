@@ -8,18 +8,22 @@
 import UIKit
 
 struct TableViewHeaderFooterViewProvider<View: ReusableTableViewHeaderFooterView & StateRepresentable>: TableViewHeaderFooterViewProviding {
-    private(set) var viewHeight: CGFloat
+    let viewHeight: CGFloat
 
-    let state: () -> View.State
+    let state: (Int) -> View.State
 
     func register(with tableView: UITableView) {
         tableView.register(View.self)
     }
 
-    func view(with tableView: UITableView) -> UITableViewHeaderFooterView? {
+    func viewForSectionAt(_ section: Int, with tableView: UITableView) -> UITableViewHeaderFooterView? {
         let view = tableView.dequeueReusableHeaderFooterView(withType: View.self)
-        view.setState(state(), animated: false)
+        view.setState(state(section), animated: false)
         return view
+    }
+
+    func viewHeightForSectionAt(_ section: Int) -> CGFloat {
+        viewHeight
     }
 
 }

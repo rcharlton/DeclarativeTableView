@@ -8,11 +8,11 @@
 import UIKit
 
 protocol TableViewHeaderFooterViewProviding {
-    var viewHeight: CGFloat { get }
-
     func register(with tableView: UITableView)
 
-    func view(with tableView: UITableView) -> UITableViewHeaderFooterView?
+    func viewForSectionAt(_ section: Int, with tableView: UITableView) -> UITableViewHeaderFooterView?
+
+    func viewHeightForSectionAt(_ section: Int) -> CGFloat
 }
 
 protocol TableViewCellProviding {
@@ -26,15 +26,15 @@ protocol TableViewCellProviding {
 protocol TableViewSectionProviding {
     var numberOfRows: Int { get }
 
-    var headerViewHeight: CGFloat { get }
-
-    var footerViewHeight: CGFloat { get }
-
     func register(with tableView: UITableView)
 
-    func headerView(with tableView: UITableView) -> UIView?
+    func headerViewForSectionAt(_ section: Int, with tableView: UITableView) -> UIView?
 
-    func footerView(with tableView: UITableView) -> UIView?
+    func headerViewHeightForSectionAt(_ section: Int) -> CGFloat
+
+    func footerViewForSectionAt(_ section: Int, with tableView: UITableView) -> UIView?
+
+    func footerViewHeightForSectionAt(_ section: Int) -> CGFloat
 
     func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell?
 }
@@ -50,25 +50,25 @@ struct TableViewSectionProvider: TableViewSectionProviding {
         cellProviders.reduce(0) { $0 + $1.rows.count }
     }
 
-    var headerViewHeight: CGFloat {
-        headerViewProvider?.viewHeight ?? 0
-    }
-
-    var footerViewHeight: CGFloat {
-        footerViewProvider?.viewHeight ?? 0
-    }
-
     func register(with tableView: UITableView) {
         headerViewProvider?.register(with: tableView)
         cellProviders.forEach { $0.register(with: tableView) }
     }
 
-    func headerView(with tableView: UITableView) -> UIView? {
-        headerViewProvider?.view(with: tableView)
+    func headerViewForSectionAt(_ section: Int, with tableView: UITableView) -> UIView? {
+        headerViewProvider?.viewForSectionAt(section, with: tableView)
     }
 
-    func footerView(with tableView: UITableView) -> UIView? {
-        footerViewProvider?.view(with: tableView)
+    func headerViewHeightForSectionAt(_ section: Int) -> CGFloat {
+        headerViewProvider?.viewHeightForSectionAt(section) ?? 0
+    }
+
+    func footerViewForSectionAt(_ section: Int, with tableView: UITableView) -> UIView? {
+        footerViewProvider?.viewForSectionAt(section, with: tableView)
+    }
+
+    func footerViewHeightForSectionAt(_ section: Int) -> CGFloat {
+        footerViewProvider?.viewHeightForSectionAt(section) ?? 0
     }
 
     func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell? {
