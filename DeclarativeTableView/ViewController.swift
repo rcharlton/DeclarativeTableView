@@ -17,9 +17,9 @@ class ViewController: UIViewController {
     private let tableViewAdapter = configure(TableViewAdapter()) {
         $0.cellProviders = [
             [
-                TableViewRowAdapter<MessageTableViewCell>(row: 0) { _ in "Hello" },
-                TableViewRowAdapter<NumberTableViewCell>(rows: 1...3) { $0.row },
-                TableViewRowAdapter<DateTableViewCell>(row: 4) { _ in Date().advanced(by: 24 * 60 * 60) }
+                TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Hello" },
+                TableViewCellProvider<NumberTableViewCell>(rows: 1...3) { $0.row },
+                TableViewCellProvider<DateTableViewCell>(row: 4) { _ in Date().advanced(by: 24 * 60 * 60) }
             ]
         ]
     }

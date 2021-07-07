@@ -1,5 +1,5 @@
 //
-//  TableViewRowAdapter.swift
+//  TableViewCellProvider.swift
 //  DeclarativeTableView
 //
 //  Created by Robin Charlton on 07/07/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TableViewRowAdapter<TableViewCell: ReusableTableViewCell & StateRepresentable>: TableViewCellProviding {
+struct TableViewCellProvider<TableViewCell: ReusableTableViewCell & StateRepresentable>: TableViewCellProviding {
     let rows: ClosedRange<Int>
     let state: (IndexPath) -> TableViewCell.State
 
