@@ -24,6 +24,7 @@
 		007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */; };
 		007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */; };
 		007A89212695D90800B5D8D5 /* MyHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */; };
+		00A2E6B12695F024005E1AD1 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A2E6B02695F024005E1AD1 /* Component.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionProvider.swift; sourceTree = "<group>"; };
 		007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderFooterViewProvider.swift; sourceTree = "<group>"; };
 		007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeaderFooterView.swift; sourceTree = "<group>"; };
+		00A2E6B02695F024005E1AD1 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				007A88E92694BF2E00B5D8D5 /* Info.plist */,
 				007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */,
+				00A2E6B02695F024005E1AD1 /* Component.swift */,
 				007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */,
 				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
 				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */,
+				00A2E6B12695F024005E1AD1 /* Component.swift in Sources */,
 				007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */,
 				007A88E02694BF2C00B5D8D5 /* ViewController.swift in Sources */,
 				007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */,

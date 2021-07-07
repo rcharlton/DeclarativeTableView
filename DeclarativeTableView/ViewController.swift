@@ -14,11 +14,11 @@ class ViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let tableViewAdapter = configure(TableViewAdapter()) {
-        $0.sections = [
+    private var exampleOfManualDeclarations: [TableViewSectionProviding] {
+        [
             TableViewSectionProvider(
-                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 32){ (UIColor.orange, "Header for section \($0)") },
-                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 64){ (UIColor.gray, "Footer for section \($0)") },
+                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.orange, "Header for section \($0)") },
+                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.gray, "Footer for section \($0)") },
                 cellProviders: [
                     TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Here are some number rows:" },
                     TableViewCellProvider<NumberTableViewCell>(rows: 1...20) { $0.row },
@@ -26,8 +26,8 @@ class ViewController: UIViewController {
                 ]
             ),
             TableViewSectionProvider(
-                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 64){ (UIColor.orange, "Header for section \($0)") },
-                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>(viewHeight: 64){ (UIColor.gray, "Footer for section \($0)") },
+                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.orange, "Header for section \($0)") },
+                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.gray, "Footer for section \($0)") },
                 cellProviders: [
                     TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Another message cell" },
                     TableViewCellProvider<DateTableViewCell>(rows: 1...10) { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }
@@ -36,9 +36,32 @@ class ViewController: UIViewController {
         ]
     }
 
+    private var exampleOfComponentDeclarations: [TableViewSectionProviding] {
+        [
+            .header(state: { (UIColor.orange, "Header for section \($0)") }),
+            .message(state: { _ in "Here are some number rows:" }),
+            .number(state: { $0.row }),
+            .number(state: { $0.row }),
+            .number(state: { $0.row }),
+            .number(state: { $0.row }),
+            .number(state: { $0.row }),
+            .date(state: { _ in Date() }),
+            .footer(state: { (UIColor.gray, "Footer for section \($0)") }),
+            .header(state: { (UIColor.orange, "Header for section \($0)") }),
+            .message(state: { _ in "Another message cell" }),
+            .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+            .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+            .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+        ].asTableViewSectionProviders()
+    }
+
+    private let tableViewAdapter = TableViewAdapter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableViewAdapter.sections = exampleOfManualDeclarations
+        tableViewAdapter.sections = exampleOfComponentDeclarations
         tableViewAdapter.register(with: tableView)
 
         view.addSubview(tableView)

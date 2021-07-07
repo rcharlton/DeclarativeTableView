@@ -8,10 +8,12 @@
 import Bricolage
 import UIKit
 
-class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, StateRepresentable {
+class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, StateRepresentable, ViewHeightProviding {
     typealias State = (UIColor, String)
 
     private(set) var state = (UIColor.gray, "")
+
+    static var viewHeight: CGFloat = 64
 
     private let label = configure(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
