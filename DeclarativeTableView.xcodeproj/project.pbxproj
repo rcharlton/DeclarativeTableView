@@ -80,31 +80,39 @@
 			children = (
 				007A88E92694BF2E00B5D8D5 /* Info.plist */,
 				007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */,
-				007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */,
-				007A88F42694C89800B5D8D5 /* Reusable.swift */,
 				007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */,
+				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
+				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
+				007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */,
+				007A88E12694BF2C00B5D8D5 /* Main.storyboard */,
+				007A89242695DE4C00B5D8D5 /* TableViewAdapter */,
+				007A890926959AC100B5D8D5 /* Views */,
+			);
+			path = DeclarativeTableView;
+			sourceTree = "<group>";
+		};
+		007A890926959AC100B5D8D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				007A89002695999F00B5D8D5 /* DateTableViewCell.swift */,
+				007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */,
+				007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */,
+				007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		007A89242695DE4C00B5D8D5 /* TableViewAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				007A88F42694C89800B5D8D5 /* Reusable.swift */,
 				007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */,
 				007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */,
 				007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */,
 				007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */,
 				007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */,
-				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
-				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
-				007A890926959AC100B5D8D5 /* Cells */,
-				007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */,
-				007A88E12694BF2C00B5D8D5 /* Main.storyboard */,
 			);
-			path = DeclarativeTableView;
-			sourceTree = "<group>";
-		};
-		007A890926959AC100B5D8D5 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				007A89002695999F00B5D8D5 /* DateTableViewCell.swift */,
-				007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */,
-				007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */,
-			);
-			path = Cells;
+			path = TableViewAdapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
