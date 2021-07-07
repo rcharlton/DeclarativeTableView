@@ -15,11 +15,16 @@ class ViewController: UIViewController {
     }
 
     private let tableViewAdapter = configure(TableViewAdapter()) {
-        $0.cellProviders = [
+        $0.sections = [
             [
                 TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Hello" },
                 TableViewCellProvider<NumberTableViewCell>(rows: 1...3) { $0.row },
-                TableViewCellProvider<DateTableViewCell>(row: 4) { _ in Date().advanced(by: 24 * 60 * 60) }
+                TableViewCellProvider<DateTableViewCell>(row: 4) { _ in Date() }
+            ],
+            [
+                TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "There" },
+                TableViewCellProvider<DateTableViewCell>(row: 1) { _ in Date().advanced(by: 24 * 60 * 60) },
+                TableViewCellProvider<DateTableViewCell>(row: 2) { _ in Date().advanced(by: 2 * 24 * 60 * 60) }
             ]
         ]
     }

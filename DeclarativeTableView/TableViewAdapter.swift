@@ -15,26 +15,30 @@ protocol TableViewCellProviding {
 
 class TableViewAdapter: NSObject, UITableViewDataSource {
 
-    var cellProviders: [[TableViewCellProviding]] = [[]]
+    var sections: [[TableViewCellProviding]] = [[]]
 
     func register(with tableView: UITableView) {
         tableView.dataSource = self
 
-        cellProviders
+        sections
             .flatMap { $0 }
             .forEach { $0.register(with: tableView) }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        cellProviders.count
+        sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cellProviders[section].reduce(0) { $0 + $1.rows.count }
+        sections[section].reduce(0) { $0 + $1.rows.count }
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "HEADER"
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let provider = cellProviders[indexPath.section].first { $0.rows.contains(indexPath.row) }
+        let provider = sections[indexPath.section].first { $0.rows.contains(indexPath.row) }
         return provider?.tableView(tableView, cellForRowAt: indexPath) ?? MessageTableViewCell()
     }
 
