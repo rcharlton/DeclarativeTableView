@@ -12,14 +12,22 @@ class ViewController: UIViewController {
 
     private let tableView = configure(UITableView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.register(MessageTableViewCell.self)
     }
-    private let tableViewAdapter = TableViewAdapter()
+
+    private let tableViewAdapter = configure(TableViewAdapter()) {
+        $0.cellProviders = [
+            [
+                RowAdapter<MessageTableViewCell>(row: 0) { _ in "Hello" },
+                RowAdapter<NumberTableViewCell>(rows: 1...3) { $0.row },
+                RowAdapter<DateTableViewCell>(row: 4) { _ in Date().advanced(by: 24 * 60 * 60) }
+            ]
+        ]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.dataSource = tableViewAdapter
+        tableViewAdapter.register(with: tableView)
 
         view.addSubview(tableView)
 
@@ -35,54 +43,48 @@ class ViewController: UIViewController {
 
 class TableViewAdapter: NSObject, UITableViewDataSource {
 
-    let cellProviders: [TableViewCellProviding] = [
-        RowAdapter<MessageTableViewCell>(section: 0, rows: 0...9) { _ in "Hello world" }
-    ]
+    var cellProviders: [[TableViewCellProviding]] = [[]]
+
+    func register(with tableView: UITableView) {
+        tableView.dataSource = self
+
+        cellProviders
+            .flatMap { $0 }
+            .forEach { $0.register(with: tableView) }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cellProviders
-            .filter { $0.section == section }
-            .reduce(0) { $0 + $1.count }
+        cellProviders[section].reduce(0) { $0 + $1.rows.count }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let provider = cellProviders.first { $0.contains(indexPath: indexPath) }
+        let provider = cellProviders[indexPath.section].first { $0.rows.contains(indexPath.row) }
         return provider?.tableView(tableView, cellForRowAt: indexPath) ?? MessageTableViewCell()
     }
 
 }
 
-protocol StateRepresentable {
-    associatedtype State
-    var state: State { get }
-    func setState(_ state: State, animated isAnimated: Bool)
-}
-
 protocol TableViewCellProviding {
-    var section: Int { get }
     var rows: ClosedRange<Int> { get }
+    func register(with tableView: UITableView)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
 }
 
-extension TableViewCellProviding {
-    var count: Int {
-        rows.count
-    }
-
-    func contains(indexPath: IndexPath) -> Bool {
-        section == indexPath.section && rows.contains(indexPath.row)
-    }
-}
-
-class RowAdapter<TableViewCell: UITableViewCell & Reusable & StateRepresentable>: TableViewCellProviding {
-    let section: Int
+struct RowAdapter<TableViewCell: ReusableTableViewCell & StateRepresentable>: TableViewCellProviding {
     let rows: ClosedRange<Int>
     let state: (IndexPath) -> TableViewCell.State
 
-    init(section: Int, rows: ClosedRange<Int>, state: @escaping (IndexPath) -> TableViewCell.State) {
-        self.section = section
+    init(rows: ClosedRange<Int>, state: @escaping (IndexPath) -> TableViewCell.State) {
         self.rows = rows
         self.state = state
+    }
+
+    init(row: Int, state: @escaping (IndexPath) -> TableViewCell.State) {
+        self.init(rows: (row...row), state: state)
+    }
+
+    func register(with tableView: UITableView) {
+        tableView.register(TableViewCell.self)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

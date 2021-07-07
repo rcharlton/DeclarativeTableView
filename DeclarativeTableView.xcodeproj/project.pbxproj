@@ -16,6 +16,9 @@
 		007A88F22694C7BD00B5D8D5 /* Bricolage in Frameworks */ = {isa = PBXBuildFile; productRef = 007A88F12694C7BD00B5D8D5 /* Bricolage */; };
 		007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F42694C89800B5D8D5 /* Reusable.swift */; };
 		007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */; };
+		007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */; };
+		007A89022695999F00B5D8D5 /* NumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */; };
+		007A89032695999F00B5D8D5 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89002695999F00B5D8D5 /* DateTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		007A88E92694BF2E00B5D8D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		007A88F42694C89800B5D8D5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRepresentable.swift; sourceTree = "<group>"; };
+		007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTableViewCell.swift; sourceTree = "<group>"; };
+		007A89002695999F00B5D8D5 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,15 +70,26 @@
 			children = (
 				007A88E92694BF2E00B5D8D5 /* Info.plist */,
 				007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */,
-				007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */,
+				007A890926959AC100B5D8D5 /* Cells */,
 				007A88F42694C89800B5D8D5 /* Reusable.swift */,
 				007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */,
+				007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */,
 				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
 				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
 				007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */,
 				007A88E12694BF2C00B5D8D5 /* Main.storyboard */,
 			);
 			path = DeclarativeTableView;
+			sourceTree = "<group>";
+		};
+		007A890926959AC100B5D8D5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				007A89002695999F00B5D8D5 /* DateTableViewCell.swift */,
+				007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */,
+				007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,11 +168,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */,
 				007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */,
 				007A88E02694BF2C00B5D8D5 /* ViewController.swift in Sources */,
 				007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */,
 				007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */,
 				007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */,
+				007A89022695999F00B5D8D5 /* NumberTableViewCell.swift in Sources */,
+				007A89032695999F00B5D8D5 /* DateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

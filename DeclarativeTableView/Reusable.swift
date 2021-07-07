@@ -17,12 +17,14 @@ extension Reusable {
     }
 }
 
+typealias ReusableTableViewCell = UITableViewCell & Reusable
+
 extension UITableView {
-    func register<T: UITableViewCell>(_: T.Type) where T: Reusable {
+    func register<T: ReusableTableViewCell>(_: T.Type) {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
 
-    func dequeueReusableCell<T: UITableViewCell & Reusable>(
+    func dequeueReusableCell<T: ReusableTableViewCell>(
         withType type: T.Type,
         for indexPath: IndexPath
     ) -> T {
