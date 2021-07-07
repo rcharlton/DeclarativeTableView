@@ -9,6 +9,7 @@ import UIKit
 
 struct TableViewCellProvider<TableViewCell: ReusableTableViewCell & StateRepresentable>: TableViewCellProviding {
     let rows: ClosedRange<Int>
+    
     let state: (IndexPath) -> TableViewCell.State
 
     init(rows: ClosedRange<Int>, state: @escaping (IndexPath) -> TableViewCell.State) {
