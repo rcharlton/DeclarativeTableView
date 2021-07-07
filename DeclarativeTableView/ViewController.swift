@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
 
     private var exampleOfComponentDeclarations: [TableViewSectionProviding] {
-        [
+        let components: [Component] = [
             .header(state: { (UIColor.orange, "Header for section \($0)") }),
             .message(state: { _ in "Here are some number rows:" }),
             .number(state: { $0.row }),
@@ -52,7 +52,9 @@ class ViewController: UIViewController {
             .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
             .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
             .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
-        ].asTableViewSectionProviders()
+        ]
+
+        return components.asTableViewSectionProviders()
     }
 
     private let tableViewAdapter = TableViewAdapter()

@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0062D48F2695F6FA00BCA2AB /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D48E2695F6FA00BCA2AB /* Configure.swift */; };
 		007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */; };
 		007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */; };
 		007A88E02694BF2C00B5D8D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88DF2694BF2C00B5D8D5 /* ViewController.swift */; };
 		007A88E32694BF2C00B5D8D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007A88E12694BF2C00B5D8D5 /* Main.storyboard */; };
 		007A88E52694BF2E00B5D8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007A88E42694BF2E00B5D8D5 /* Assets.xcassets */; };
 		007A88E82694BF2E00B5D8D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */; };
-		007A88F22694C7BD00B5D8D5 /* Bricolage in Frameworks */ = {isa = PBXBuildFile; productRef = 007A88F12694C7BD00B5D8D5 /* Bricolage */; };
 		007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F42694C89800B5D8D5 /* Reusable.swift */; };
 		007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */; };
 		007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */; };
@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0062D48E2695F6FA00BCA2AB /* Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		007A88D82694BF2C00B5D8D5 /* DeclarativeTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeclarativeTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				007A88F22694C7BD00B5D8D5 /* Bricolage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +90,7 @@
 				007A88E12694BF2C00B5D8D5 /* Main.storyboard */,
 				007A89242695DE4C00B5D8D5 /* TableViewAdapter */,
 				007A890926959AC100B5D8D5 /* Views */,
+				0062D48E2695F6FA00BCA2AB /* Configure.swift */,
 			);
 			path = DeclarativeTableView;
 			sourceTree = "<group>";
@@ -135,7 +136,6 @@
 			);
 			name = DeclarativeTableView;
 			packageProductDependencies = (
-				007A88F12694C7BD00B5D8D5 /* Bricolage */,
 			);
 			productName = DeclarativeTableView;
 			productReference = 007A88D82694BF2C00B5D8D5 /* DeclarativeTableView.app */;
@@ -165,7 +165,6 @@
 			);
 			mainGroup = 007A88CF2694BF2C00B5D8D5;
 			packageReferences = (
-				007A88F02694C7BD00B5D8D5 /* XCRemoteSwiftPackageReference "Bricolage" */,
 			);
 			productRefGroup = 007A88D92694BF2C00B5D8D5 /* Products */;
 			projectDirPath = "";
@@ -208,6 +207,7 @@
 				007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */,
 				007A89022695999F00B5D8D5 /* NumberTableViewCell.swift in Sources */,
 				007A89032695999F00B5D8D5 /* DateTableViewCell.swift in Sources */,
+				0062D48F2695F6FA00BCA2AB /* Configure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,25 +409,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		007A88F02694C7BD00B5D8D5 /* XCRemoteSwiftPackageReference "Bricolage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:rcharlton/Bricolage.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		007A88F12694C7BD00B5D8D5 /* Bricolage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 007A88F02694C7BD00B5D8D5 /* XCRemoteSwiftPackageReference "Bricolage" */;
-			productName = Bricolage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 007A88D02694BF2C00B5D8D5 /* Project object */;
 }
