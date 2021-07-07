@@ -7,32 +7,59 @@
 
 import UIKit
 
+protocol TableViewHeaderFooterViewProviding {
+    var viewHeight: CGFloat { get }
+
+    func register(with tableView: UITableView)
+
+    func view(with tableView: UITableView) -> UITableViewHeaderFooterView?
+}
+
 protocol TableViewCellProviding {
     var rows: ClosedRange<Int> { get }
 
     func register(with tableView: UITableView)
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell
 }
 
-struct TableViewSectionProvider {
-    let section: Int
+protocol TableViewSectionProviding {
+    var numberOfRows: Int { get }
 
-    let title: () -> String?
+    var headerViewHeight: CGFloat { get }
 
-    let providers: [TableViewCellProviding]
+    func register(with tableView: UITableView)
+
+    func headerView(with tableView: UITableView) -> UIView?
+
+    func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell?
+}
+
+struct TableViewSectionProvider: TableViewSectionProviding {
+    let headerViewProvider: TableViewHeaderFooterViewProviding?
+
+    let cellProviders: [TableViewCellProviding]
 
     var numberOfRows: Int {
-        providers.reduce(0) { $0 + $1.rows.count }
+        cellProviders.reduce(0) { $0 + $1.rows.count }
+    }
+
+    var headerViewHeight: CGFloat {
+        headerViewProvider?.viewHeight ?? 0
     }
 
     func register(with tableView: UITableView) {
-        providers.forEach { $0.register(with: tableView) }
+        headerViewProvider?.register(with: tableView)
+        cellProviders.forEach { $0.register(with: tableView) }
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
-        providers
+    func headerView(with tableView: UITableView) -> UIView? {
+        headerViewProvider?.view(with: tableView)
+    }
+
+    func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell? {
+        cellProviders
             .first { $0.rows.contains(indexPath.row) }
-            .map { $0.tableView(tableView, cellForRowAt: indexPath) }
+            .map { $0.cellForRowAt(indexPath, with: tableView) }
     }
 }

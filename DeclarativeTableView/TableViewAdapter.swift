@@ -7,12 +7,13 @@
 
 import UIKit
 
-class TableViewAdapter: NSObject, UITableViewDataSource {
+class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
 
-    var sections: [TableViewSectionProvider] = []
+    var sections: [TableViewSectionProviding] = []
 
     func register(with tableView: UITableView) {
         tableView.dataSource = self
+        tableView.delegate = self
         sections.forEach { $0.register(with: tableView) }
     }
 
@@ -24,12 +25,16 @@ class TableViewAdapter: NSObject, UITableViewDataSource {
         sections[section].numberOfRows
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sections[section].title()
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        sections[section].headerView(with: tableView)
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        sections[section].headerViewHeight
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        sections[indexPath.section].tableView(tableView, cellForRowAt: indexPath) ?? MessageTableViewCell()
+        sections[indexPath.section].cellForRowAt(indexPath, with: tableView) ?? MessageTableViewCell()
     }
 
 }

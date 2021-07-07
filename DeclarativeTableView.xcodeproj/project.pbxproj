@@ -22,6 +22,7 @@
 		007A890D2695B07300B5D8D5 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */; };
 		007A89102695B0F800B5D8D5 /* TableViewCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */; };
 		007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */; };
+		007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
 		007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellProvider.swift; sourceTree = "<group>"; };
 		007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionProvider.swift; sourceTree = "<group>"; };
+		007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderFooterViewProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */,
 				007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */,
 				007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */,
+				007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */,
 				007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */,
 				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
 				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
@@ -185,6 +188,7 @@
 				007A890D2695B07300B5D8D5 /* TableViewAdapter.swift in Sources */,
 				007A89102695B0F800B5D8D5 /* TableViewCellProvider.swift in Sources */,
 				007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */,
+				007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */,
 				007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */,
 				007A89022695999F00B5D8D5 /* NumberTableViewCell.swift in Sources */,
 				007A89032695999F00B5D8D5 /* DateTableViewCell.swift in Sources */,
