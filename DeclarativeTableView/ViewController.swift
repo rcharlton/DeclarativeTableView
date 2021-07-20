@@ -37,24 +37,22 @@ class ViewController: UIViewController {
     }
 
     private var exampleOfComponentDeclarations: [TableViewSectionProviding] {
-        let components: [Component] = [
-            .header(state: { (UIColor.orange, "Header for section \($0)") }),
-            .message(state: { _ in "Here are some number rows:" }),
-            .number(state: { $0.row }),
-            .number(state: { $0.row }),
-            .number(state: { $0.row }),
-            .number(state: { $0.row }),
-            .number(state: { $0.row }),
-            .date(state: { _ in Date() }),
-            .footer(state: { (UIColor.gray, "Footer for section \($0)") }),
-            .header(state: { (UIColor.orange, "Header for section \($0)") }),
-            .message(state: { _ in "Another message cell" }),
-            .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
-            .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
-            .date(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
-        ]
-
-        return components.asTableViewSectionProviders()
+        [
+            HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
+            MessageItem(state: { _ in "Here are some number rows:" }),
+            NumberItem(state: { $0.row }),
+            NumberItem(state: { $0.row }),
+            NumberItem(state: { $0.row }),
+            NumberItem(state: { $0.row }),
+            NumberItem(state: { $0.row }),
+            DateItem(state: { _ in Date() }),
+            FooterItem(state: { (UIColor.gray, "Footer for section \($0)") }),
+            HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
+            MessageItem(state: { _ in "Another message cell" }),
+            DateItem(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+            DateItem(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+            DateItem(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+        ].tableViewSectionProviders
     }
 
     private let tableViewAdapter = TableViewAdapter()

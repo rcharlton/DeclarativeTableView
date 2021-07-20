@@ -7,52 +7,59 @@
 
 import UIKit
 
-enum Component {
-    case header(state: (Int) -> (UIColor, String))
-    case footer(state: (Int) -> (UIColor, String))
-    case number(state: (IndexPath) -> Int)
-    case message(state: (IndexPath) -> String)
-    case date(state: (IndexPath) -> Date)
+struct HeaderItem: TableViewRepresentable {
+    let state: (Int) -> (UIColor, String)
+
+    func tableViewHeaderFooterViewProviderAt(_ indexPath: IndexPath) -> TableViewHeaderFooterViewProviding? {
+        TableViewHeaderFooterViewProvider<MyHeaderFooterView>(state: state)
+    }
 }
 
-extension Component: TableViewRepresentable {
-    func asTableViewHeaderFooterViewProvider(indexPath: IndexPath) -> TableViewHeaderFooterViewProviding? {
-        switch self {
-        case let .header(state),
-             let .footer(state):
-            return TableViewHeaderFooterViewProvider<MyHeaderFooterView>(state: state)
-        case .number,
-             .message,
-             .date:
-            return nil
-        }
-    }
+typealias FooterItem = HeaderItem
 
-    func asTableViewCellProvider(indexPath: IndexPath) -> TableViewCellProviding? {
-        switch self {
-        case .header,
-             .footer:
-            return nil
-        case let .number(state):
-            return TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, state: state)
-        case .message(state: let state):
-            return TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, state: state)
-        case .date(state: let state):
-            return TableViewCellProvider<DateTableViewCell>(row: indexPath.row, state: state)
-        }
+struct NumberItem: TableViewRepresentable {
+    let state: (IndexPath) -> Int
+
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
+        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, state: state)
+    }
+}
+
+struct MessageItem: TableViewRepresentable {
+    let state: (IndexPath) -> String
+
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
+        TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, state: state)
+    }
+}
+
+struct DateItem: TableViewRepresentable {
+    let state: (IndexPath) -> Foundation.Date
+
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
+        TableViewCellProvider<DateTableViewCell>(row: indexPath.row, state: state)
     }
 }
 
 // MARK: -
 
 protocol TableViewRepresentable {
-    func asTableViewHeaderFooterViewProvider(indexPath: IndexPath) -> TableViewHeaderFooterViewProviding?
-
-    func asTableViewCellProvider(indexPath: IndexPath) -> TableViewCellProviding?
+    func tableViewHeaderFooterViewProviderAt(_ indexPath: IndexPath) -> TableViewHeaderFooterViewProviding?
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding?
 }
 
-extension Array where Element: TableViewRepresentable {
-    func asTableViewSectionProviders() -> [TableViewSectionProviding] {
+extension TableViewRepresentable {
+    func tableViewHeaderFooterViewProviderAt(_ indexPath: IndexPath) -> TableViewHeaderFooterViewProviding? {
+        nil
+    }
+
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
+        nil
+    }
+}
+
+extension Array where Element == TableViewRepresentable {
+    var tableViewSectionProviders: [TableViewSectionProviding] {
         var sections: [TableViewSectionProviding] = []
         var header: TableViewHeaderFooterViewProviding?
         var cells: [TableViewCellProviding] = []
@@ -60,7 +67,7 @@ extension Array where Element: TableViewRepresentable {
         for component in self {
             let indexPath = IndexPath(row: cells.count, section: sections.count)
 
-            if let incomingHeaderOrFooter = component.asTableViewHeaderFooterViewProvider(indexPath: indexPath) {
+            if let incomingHeaderOrFooter = component.tableViewHeaderFooterViewProviderAt(indexPath) {
                 if header == nil && cells.isEmpty {
                     header = incomingHeaderOrFooter
                 } else {
@@ -76,7 +83,7 @@ extension Array where Element: TableViewRepresentable {
                 }
             }
 
-            if let incomingCell = component.asTableViewCellProvider(indexPath: indexPath) {
+            if let incomingCell = component.tableViewCellProviderAt(indexPath) {
                 cells.append(incomingCell)
             }
         }
