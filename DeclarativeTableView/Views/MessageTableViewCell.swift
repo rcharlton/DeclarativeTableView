@@ -7,12 +7,12 @@
 
 import UIKit
 
-class MessageTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
+class MessageTableViewCell: UITableViewCell, Reusable, TypeDepending, ViewHeightProviding {
     static var viewHeight: CGFloat = 50
 
-    func setDependencies(_ dependencies: String) {
+    func setDependency(_ dependency: String) {
         contentView.backgroundColor = .systemPink
-        textLabel?.text = dependencies
+        textLabel?.text = dependency
         textLabel?.adjustsFontSizeToFitWidth = true
     }
 }

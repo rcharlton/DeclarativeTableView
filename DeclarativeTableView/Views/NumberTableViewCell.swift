@@ -7,12 +7,12 @@
 
 import UIKit
 
-class NumberTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
+class NumberTableViewCell: UITableViewCell, Reusable, TypeDepending, ViewHeightProviding {
     static var viewHeight: CGFloat = 40
 
-    func setDependencies(_ dependencies: Int) {
+    func setDependency(_ dependency: Int) {
         contentView.backgroundColor = .systemYellow
-        textLabel?.text = "The number is \(dependencies)"
+        textLabel?.text = "The number is \(dependency)"
         textLabel?.adjustsFontSizeToFitWidth = true
     }
 }

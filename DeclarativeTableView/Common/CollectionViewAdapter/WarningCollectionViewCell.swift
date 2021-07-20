@@ -7,8 +7,8 @@
 
 import UIKit
 
-class WarningCollectionViewCell: UICollectionViewCell, Reusable, TypeDependent, ViewHeightProviding {
-    typealias Dependencies = Void
+class WarningCollectionViewCell: UICollectionViewCell, Reusable, TypeDepending, ViewHeightProviding {
+    typealias DependentType = Void
     static var viewHeight: CGFloat = 50
 
     init(at indexPath: IndexPath) {

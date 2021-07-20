@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CarouselTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
+class CarouselTableViewCell: UITableViewCell, Reusable, TypeDepending, ViewHeightProviding {
     static var viewHeight: CGFloat = 180
 
     private var state: [String] = []
@@ -50,7 +50,7 @@ class CarouselTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeigh
         ])
     }
 
-    func setDependencies(_ dependencies: [CollectionViewRepresentable]) {
-        collectionViewAdapter.setContents(dependencies)
+    func setDependency(_ dependency: [CollectionViewRepresentable]) {
+        collectionViewAdapter.setContents(dependency)
     }
 }

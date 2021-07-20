@@ -13,7 +13,7 @@ struct HeaderItem {
 
 extension HeaderItem: TableViewRepresentable {
     func tableViewHeaderFooterViewProviderAt(_ indexPath: IndexPath) -> TableViewHeaderFooterViewProviding? {
-        TableViewHeaderFooterViewProvider<MyHeaderFooterView>(dependencies: state)
+        TableViewHeaderFooterViewProvider<MyHeaderFooterView>(dependency: state)
     }
 }
 
@@ -26,7 +26,7 @@ struct NumberItem {
 
 extension NumberItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, dependencies: state) { _ in action() }
+        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, dependency: state) { _ in action() }
     }
 }
 
@@ -36,13 +36,13 @@ struct MessageItem {
 
 extension MessageItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, dependencies: state)
+        TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, dependency: state)
     }
 }
 
 extension MessageItem: CollectionViewRepresentable {
     func collectionViewCellProviderAt(_ indexPath: IndexPath) -> CollectionViewCellProviding? {
-        CollectionViewCellProvider<MessageCollectionViewCell>(row: indexPath.row, dependencies: state)
+        CollectionViewCellProvider<MessageCollectionViewCell>(row: indexPath.row, dependency: state)
     }
 }
 
@@ -52,7 +52,7 @@ struct DateItem {
 
 extension DateItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<DateTableViewCell>(row: indexPath.row, dependencies: state)
+        TableViewCellProvider<DateTableViewCell>(row: indexPath.row, dependency: state)
     }
 }
 
@@ -71,6 +71,6 @@ struct CarouselItem {
 
 extension CarouselItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<CarouselTableViewCell>(row: indexPath.row, dependencies: contents)
+        TableViewCellProvider<CarouselTableViewCell>(row: indexPath.row, dependency: contents)
     }
 }

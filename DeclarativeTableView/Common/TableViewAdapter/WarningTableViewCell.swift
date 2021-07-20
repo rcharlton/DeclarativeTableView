@@ -7,8 +7,8 @@
 
 import UIKit
 
-class WarningTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
-    typealias Dependencies = Void
+class WarningTableViewCell: UITableViewCell, Reusable, TypeDepending, ViewHeightProviding {
+    typealias DependentType = Void
     static var viewHeight: CGFloat = 50
 
     init(at indexPath: IndexPath) {

@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SpacerTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
-    typealias Dependencies = Void
+class SpacerTableViewCell: UITableViewCell, Reusable, TypeDepending, ViewHeightProviding {
+    typealias DependentType = Void
 
     static var viewHeight: CGFloat = 8
 

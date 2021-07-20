@@ -7,12 +7,12 @@
 
 import UIKit
 
-class DateTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
+class DateTableViewCell: UITableViewCell, Reusable, TypeDepending, ViewHeightProviding {
     static var viewHeight: CGFloat = 74
 
-    func setDependencies(_ dependencies: Date) {
+    func setDependency(_ dependency: Date) {
         contentView.backgroundColor = .systemTeal
-        textLabel?.text = DateFormatter.localizedString(from: dependencies, dateStyle: .medium, timeStyle: .short)
+        textLabel?.text = DateFormatter.localizedString(from: dependency, dateStyle: .medium, timeStyle: .short)
         textLabel?.adjustsFontSizeToFitWidth = true
     }
 }

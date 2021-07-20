@@ -8,9 +8,9 @@
 import UIKit
 
 struct TableViewHeaderFooterViewProvider<
-    View: ReusableTableViewHeaderFooterView & TypeDependent & ViewHeightProviding
+    View: ReusableTableViewHeaderFooterView & TypeDepending & ViewHeightProviding
 >: TableViewHeaderFooterViewProviding {
-    let dependencies: (Int) -> View.Dependencies
+    let dependency: (Int) -> View.DependentType
 
     func register(with tableView: UITableView) {
         tableView.register(View.self)
@@ -18,7 +18,7 @@ struct TableViewHeaderFooterViewProvider<
 
     func viewForSectionAt(_ section: Int, with tableView: UITableView) -> UITableViewHeaderFooterView? {
         let view = tableView.dequeueReusableHeaderFooterView(withType: View.self)
-        view.setDependencies(dependencies(section))
+        view.setDependency(dependency(section))
         return view
     }
 

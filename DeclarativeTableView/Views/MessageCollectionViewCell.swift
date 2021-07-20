@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MessageCollectionViewCell: UICollectionViewCell, ViewHeightProviding, Reusable, TypeDependent {
+class MessageCollectionViewCell: UICollectionViewCell, ViewHeightProviding, Reusable, TypeDepending {
     static var viewHeight: CGFloat = 50 // TODO: review how heights are generated
 
     private let textLabel = UILabel()
@@ -28,7 +28,7 @@ class MessageCollectionViewCell: UICollectionViewCell, ViewHeightProviding, Reus
         contentView.addSubview(textLabel)
     }
 
-    func setDependencies(_ dependencies: String) {
-        textLabel.text = dependencies
+    func setDependency(_ dependency: String) {
+        textLabel.text = dependency
     }
 }

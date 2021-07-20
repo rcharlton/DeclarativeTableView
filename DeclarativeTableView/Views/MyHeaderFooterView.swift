@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, TypeDependent, ViewHeightProviding {
+class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, TypeDepending, ViewHeightProviding {
     static var viewHeight: CGFloat = 80
 
     private let label = configure(UILabel()) {
@@ -15,9 +15,9 @@ class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, TypeDependent, 
         $0.font = .systemFont(ofSize: 18, weight: .medium)
     }
 
-    func setDependencies(_ dependencies: (UIColor, String)) {
-        contentView.backgroundColor = dependencies.0
-        label.text = dependencies.1
+    func setDependency(_ dependency: (UIColor, String)) {
+        contentView.backgroundColor = dependency.0
+        label.text = dependency.1
     }
 
     override init(reuseIdentifier: String?) {
