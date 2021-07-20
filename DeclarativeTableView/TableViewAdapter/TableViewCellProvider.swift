@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable>: TableViewCellProviding {
+struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable & ViewHeightProviding>: TableViewCellProviding {
     let rows: ClosedRange<Int>
 
     let state: (IndexPath) -> Cell.State
@@ -40,6 +40,10 @@ struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable>: 
         let cell = tableView.dequeueReusableCell(withType: Cell.self, for: indexPath)
         cell.setState(state(indexPath), animated: false)
         return cell
+    }
+
+    func heightForRowAt(_ indexPath: IndexPath) -> CGFloat {
+        Cell.viewHeight
     }
 
     func didSelectRowAt(_ indexPath: IndexPath) {

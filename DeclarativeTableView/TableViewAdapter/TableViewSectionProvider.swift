@@ -22,6 +22,8 @@ protocol TableViewCellProviding {
 
     func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell
 
+    func heightForRowAt(_ indexPath: IndexPath) -> CGFloat
+
     func didSelectRowAt(_ indexPath: IndexPath)
 }
 
@@ -39,6 +41,8 @@ protocol TableViewSectionProviding {
     func footerViewHeightForSectionAt(_ section: Int) -> CGFloat
 
     func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell?
+
+    func cellHeightForRowAt(_ indexPath: IndexPath) -> CGFloat
 
     func didSelectRowAt(_ indexPath: IndexPath)
 }
@@ -80,6 +84,13 @@ struct TableViewSectionProvider: TableViewSectionProviding {
         cellProviders
             .first { $0.rows.contains(indexPath.row) }
             .map { $0.cellForRowAt(indexPath, with: tableView) }
+    }
+
+    func cellHeightForRowAt(_ indexPath: IndexPath) -> CGFloat {
+        cellProviders
+            .first { $0.rows.contains(indexPath.row) }
+            .map { $0.heightForRowAt(indexPath) }
+            ?? 0
     }
 
     func didSelectRowAt(_ indexPath: IndexPath) {

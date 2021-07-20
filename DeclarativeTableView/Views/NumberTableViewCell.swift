@@ -7,8 +7,8 @@
 
 import UIKit
 
-class NumberTableViewCell: UITableViewCell, Reusable, StateRepresentable {
-    private var state: Int = 0
+class NumberTableViewCell: UITableViewCell, Reusable, StateRepresentable, ViewHeightProviding {
+    static var viewHeight: CGFloat = 40
 
     func setState(_ state: Int, animated isAnimated: Bool) {
         textLabel?.text = "The number is \(state)"

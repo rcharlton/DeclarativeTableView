@@ -8,17 +8,13 @@
 import UIKit
 
 class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, StateRepresentable, ViewHeightProviding {
-    typealias State = (UIColor, String)
-
-    private var state = (UIColor.gray, "")
-
     static var viewHeight: CGFloat = 64
 
     private let label = configure(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func setState(_ state: State, animated isAnimated: Bool) {
+    func setState(_ state: (UIColor, String), animated isAnimated: Bool) {
         contentView.backgroundColor = state.0
         label.text = state.1
     }

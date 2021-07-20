@@ -38,19 +38,19 @@ class ViewController: UIViewController {
     private var exampleOfComponentDeclarations: [TableViewSectionProviding] {
         [
             HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }) as TableViewRepresentable,
-            MessageItem(state: { _ in "Here are some number rows:" }),
+            MessageItem { _ in "Here are some number rows:" },
             NumberItem { $0.row } action: { print("Do this") },
             NumberItem { $0.row } action: { print("Do that") },
             NumberItem { $0.row } action: { print("Do the other") },
             NumberItem { $0.row } action: { print("Do something") },
             NumberItem { $0.row } action: { print("Do something else") },
-            DateItem(state: { _ in Date() }),
-            FooterItem(state: { (UIColor.gray, "Footer for section \($0)") }),
-            HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
-            MessageItem(state: { _ in "Another message cell" }),
-            DateItem(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
-            DateItem(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
-            DateItem(state: { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }),
+            DateItem { _ in Date() },
+            FooterItem { (UIColor.gray, "Footer for section \($0)") },
+            HeaderItem { (UIColor.orange, "Header for section \($0)") },
+            MessageItem { _ in "Another message cell" },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
         ].tableViewSectionProviders
     }
 

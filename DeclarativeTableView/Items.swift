@@ -7,9 +7,11 @@
 
 import UIKit
 
-struct HeaderItem: TableViewRepresentable {
+struct HeaderItem {
     let state: (Int) -> (UIColor, String)
+}
 
+extension HeaderItem: TableViewRepresentable {
     func tableViewHeaderFooterViewProviderAt(_ indexPath: IndexPath) -> TableViewHeaderFooterViewProviding? {
         TableViewHeaderFooterViewProvider<MyHeaderFooterView>(state: state)
     }
@@ -17,26 +19,32 @@ struct HeaderItem: TableViewRepresentable {
 
 typealias FooterItem = HeaderItem
 
-struct NumberItem: TableViewRepresentable {
+struct NumberItem {
     let state: (IndexPath) -> Int
     let action: () -> Void
+}
 
+extension NumberItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
         TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, state: state) { _ in action() }
     }
 }
 
-struct MessageItem: TableViewRepresentable {
+struct MessageItem {
     let state: (IndexPath) -> String
+}
 
+extension MessageItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
         TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, state: state)
     }
 }
 
-struct DateItem: TableViewRepresentable {
+struct DateItem {
     let state: (IndexPath) -> Foundation.Date
+}
 
+extension DateItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
         TableViewCellProvider<DateTableViewCell>(row: indexPath.row, state: state)
     }

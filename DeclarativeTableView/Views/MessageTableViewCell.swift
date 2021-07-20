@@ -7,7 +7,9 @@
 
 import UIKit
 
-class MessageTableViewCell: UITableViewCell, Reusable, StateRepresentable {
+class MessageTableViewCell: UITableViewCell, Reusable, StateRepresentable, ViewHeightProviding {
+    static var viewHeight: CGFloat = 50
+
     func setState(_ state: String, animated isAnimated: Bool) {
         textLabel?.text = state
         textLabel?.adjustsFontSizeToFitWidth = true
