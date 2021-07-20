@@ -8,7 +8,7 @@
 import UIKit
 
 class DateTableViewCell: UITableViewCell, Reusable, StateRepresentable {
-    private(set) var state = Date()
+    private var state = Date()
 
     func setState(_ state: Date, animated isAnimated: Bool) {
         textLabel?.text = DateFormatter.localizedString(from: state, dateStyle: .medium, timeStyle: .short)

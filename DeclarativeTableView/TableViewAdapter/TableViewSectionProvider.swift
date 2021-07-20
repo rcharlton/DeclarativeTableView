@@ -52,6 +52,7 @@ struct TableViewSectionProvider: TableViewSectionProviding {
 
     func register(with tableView: UITableView) {
         headerViewProvider?.register(with: tableView)
+        footerViewProvider?.register(with: tableView)
         cellProviders.forEach { $0.register(with: tableView) }
     }
 

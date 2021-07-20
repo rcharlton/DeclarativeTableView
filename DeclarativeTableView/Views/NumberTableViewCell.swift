@@ -8,7 +8,7 @@
 import UIKit
 
 class NumberTableViewCell: UITableViewCell, Reusable, StateRepresentable {
-    private(set) var state: Int = 0
+    private var state: Int = 0
 
     func setState(_ state: Int, animated isAnimated: Bool) {
         textLabel?.text = "The number is \(state)"

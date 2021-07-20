@@ -7,7 +7,6 @@
 
 protocol StateRepresentable {
     associatedtype State
-    var state: State { get }
     func setState(_ state: State, animated isAnimated: Bool)
 }
 

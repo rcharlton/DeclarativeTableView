@@ -11,7 +11,7 @@ import UIKit
 class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, StateRepresentable, ViewHeightProviding {
     typealias State = (UIColor, String)
 
-    private(set) var state = (UIColor.gray, "")
+    private var state = (UIColor.gray, "")
 
     static var viewHeight: CGFloat = 64
 

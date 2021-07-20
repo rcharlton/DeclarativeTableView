@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableViewAdapter.sections = exampleOfManualDeclarations
+//        tableViewAdapter.sections = exampleOfManualDeclarations
         tableViewAdapter.sections = exampleOfComponentDeclarations
         tableViewAdapter.register(with: tableView)
 
