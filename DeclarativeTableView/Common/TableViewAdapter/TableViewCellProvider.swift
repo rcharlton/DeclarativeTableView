@@ -7,29 +7,29 @@
 
 import UIKit
 
-struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable & ViewHeightProviding>: TableViewCellProviding {
+struct TableViewCellProvider<Cell: ReusableTableViewCell & TypeDependent & ViewHeightProviding>: TableViewCellProviding {
     let rows: ClosedRange<Int>
 
-    let state: (IndexPath) -> Cell.State
+    let dependencies: (IndexPath) -> Cell.Dependencies
 
     let action: (IndexPath) -> Void
 
     init(
         rows: ClosedRange<Int>,
-        state: @escaping (IndexPath) -> Cell.State,
+        dependencies: @escaping (IndexPath) -> Cell.Dependencies,
         action: @escaping (IndexPath) -> Void = { _ in }
     ) {
         self.rows = rows
-        self.state = state
+        self.dependencies = dependencies
         self.action = action
     }
 
     init(
         row: Int,
-        state: @escaping (IndexPath) -> Cell.State,
+        dependencies: @escaping (IndexPath) -> Cell.Dependencies,
         action: @escaping (IndexPath) -> Void = { _ in }
     ) {
-        self.init(rows: (row...row), state: state, action: action)
+        self.init(rows: (row...row), dependencies: dependencies, action: action)
     }
 
     func register(with tableView: UITableView) {
@@ -38,7 +38,7 @@ struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable & 
 
     func cellForRowAt(_ indexPath: IndexPath, with tableView: UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: Cell.self, for: indexPath)
-        cell.setState(state(indexPath), animated: false)
+        cell.setDependencies(dependencies(indexPath))
         return cell
     }
 
@@ -50,4 +50,14 @@ struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable & 
         action(indexPath)
     }
 
+}
+
+extension TableViewCellProvider where Cell.Dependencies == Void {
+    init(rows: ClosedRange<Int>, action: @escaping (IndexPath) -> Void = { _ in }) {
+        self.init(rows: rows, dependencies: { _ in () }, action: action)
+    }
+
+    init(row: Int, action: @escaping (IndexPath) -> Void = { _ in }) {
+        self.init(row: row, dependencies: { _ in () }, action: action)
+    }
 }

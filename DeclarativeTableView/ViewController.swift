@@ -17,17 +17,18 @@ class ViewController: UIViewController {
     private var exampleOfManualSections: [TableViewSectionProviding] {
         [
             TableViewSectionProvider(
-                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.orange, "Header for section \($0)") },
-                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.gray, "Footer for section \($0)") },
+                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView> { (UIColor.orange, "Header for section \($0)") },
+                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView> { (UIColor.gray, "Footer for section \($0)") },
                 cellProviders: [
                     TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Here are some number rows:" },
-                    TableViewCellProvider<NumberTableViewCell>(rows: 1...20) { $0.row } action: { print("Action", $0) },
+                    TableViewCellProvider<SpacerTableViewCell>(row: 1),
+                    TableViewCellProvider<NumberTableViewCell>(rows: 2...20) { $0.row } action: { print("Action", $0) },
                     TableViewCellProvider<DateTableViewCell>(row: 21) { _ in Date() }
                 ]
             ),
             TableViewSectionProvider(
-                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.orange, "Header for section \($0)") },
-                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.gray, "Footer for section \($0)") },
+                headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView> { (UIColor.orange, "Header for section \($0)") },
+                footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView> { (UIColor.gray, "Footer for section \($0)") },
                 cellProviders: [
                     TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Another message cell" },
                     TableViewCellProvider<DateTableViewCell>(rows: 1...10) { Date().advanced(by: Double($0.row) * 24 * 60 * 60) }
@@ -42,17 +43,19 @@ class ViewController: UIViewController {
 
     /// This is a declarative representation.
     private let tableViewContents: [TableViewRepresentable] = [
-        HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
+        HeaderItem { (UIColor.orange, "Header for section \($0)") },
         MessageItem { _ in "Here are some number rows:" },
+        SpacerItem(),
         NumberItem { $0.row } action: { print("Do this") },
         NumberItem { $0.row } action: { print("Do that") },
         NumberItem { $0.row } action: { print("Do the other") },
         NumberItem { $0.row } action: { print("Do something") },
         NumberItem { $0.row } action: { print("Do something else") },
+        SpacerItem(),
         DateItem { _ in Date() },
         FooterItem { (UIColor.gray, "Footer for section \($0)") },
         HeaderItem { (UIColor.orange, "Header for section \($0)") },
-        MessageItem { _ in "Another message cell" },
+        MessageItem { _ in "Here are some date rows:" },
         DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
         DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
         DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },

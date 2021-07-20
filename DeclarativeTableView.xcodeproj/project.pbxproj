@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0039B1B526A73B8800B68907 /* ReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0039B1B426A73B8800B68907 /* ReusableTableViewCell.swift */; };
+		0039B1B826A74B9400B68907 /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0039B1B726A74B9400B68907 /* SpacerTableViewCell.swift */; };
+		0039B1BA26A74D8D00B68907 /* ViewHeightProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0039B1B926A74D8D00B68907 /* ViewHeightProviding.swift */; };
+		0039B1BC26A74FB800B68907 /* TypeDependent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0039B1BB26A74FB800B68907 /* TypeDependent.swift */; };
 		0054ED5B26A6E6B200992B61 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054ED5A26A6E6B200992B61 /* Items.swift */; };
 		0062D48F2695F6FA00BCA2AB /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D48E2695F6FA00BCA2AB /* Configure.swift */; };
 		007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */; };
@@ -18,7 +21,6 @@
 		007A88E82694BF2E00B5D8D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007A88E62694BF2E00B5D8D5 /* LaunchScreen.storyboard */; };
 		007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F42694C89800B5D8D5 /* Reusable.swift */; };
 		007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */; };
-		007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */; };
 		007A89022695999F00B5D8D5 /* NumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */; };
 		007A89032695999F00B5D8D5 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89002695999F00B5D8D5 /* DateTableViewCell.swift */; };
 		007A890D2695B07300B5D8D5 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */; };
@@ -31,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		0039B1B426A73B8800B68907 /* ReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewCell.swift; sourceTree = "<group>"; };
+		0039B1B726A74B9400B68907 /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
+		0039B1B926A74D8D00B68907 /* ViewHeightProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeightProviding.swift; sourceTree = "<group>"; };
+		0039B1BB26A74FB800B68907 /* TypeDependent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDependent.swift; sourceTree = "<group>"; };
 		0054ED5A26A6E6B200992B61 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		0062D48E2695F6FA00BCA2AB /* Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		007A88D82694BF2C00B5D8D5 /* DeclarativeTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeclarativeTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +48,6 @@
 		007A88E92694BF2E00B5D8D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		007A88F42694C89800B5D8D5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRepresentable.swift; sourceTree = "<group>"; };
 		007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTableViewCell.swift; sourceTree = "<group>"; };
 		007A89002695999F00B5D8D5 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 			children = (
 				0062D48E2695F6FA00BCA2AB /* Configure.swift */,
 				007A88F42694C89800B5D8D5 /* Reusable.swift */,
+				0039B1BB26A74FB800B68907 /* TypeDependent.swift */,
+				0039B1B926A74D8D00B68907 /* ViewHeightProviding.swift */,
 				007A89242695DE4C00B5D8D5 /* TableViewAdapter */,
 			);
 			path = Common;
@@ -115,6 +121,7 @@
 				007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */,
 				007A88F72694C8C100B5D8D5 /* MessageTableViewCell.swift */,
 				007A88FF2695999F00B5D8D5 /* NumberTableViewCell.swift */,
+				0039B1B726A74B9400B68907 /* SpacerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				0039B1B426A73B8800B68907 /* ReusableTableViewCell.swift */,
-				007A88FB2694FF7100B5D8D5 /* StateRepresentable.swift */,
 				007A890C2695B07300B5D8D5 /* TableViewAdapter.swift */,
 				007A890F2695B0F800B5D8D5 /* TableViewCellProvider.swift */,
 				007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */,
@@ -208,14 +214,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0039B1B526A73B8800B68907 /* ReusableTableViewCell.swift in Sources */,
-				007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */,
 				00A2E6B12695F024005E1AD1 /* TableViewRepresentable.swift in Sources */,
 				007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */,
 				007A88E02694BF2C00B5D8D5 /* ViewController.swift in Sources */,
+				0039B1B826A74B9400B68907 /* SpacerTableViewCell.swift in Sources */,
 				007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */,
 				007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */,
 				007A890D2695B07300B5D8D5 /* TableViewAdapter.swift in Sources */,
 				007A89102695B0F800B5D8D5 /* TableViewCellProvider.swift in Sources */,
+				0039B1BA26A74D8D00B68907 /* ViewHeightProviding.swift in Sources */,
 				0054ED5B26A6E6B200992B61 /* Items.swift in Sources */,
 				007A89212695D90800B5D8D5 /* MyHeaderFooterView.swift in Sources */,
 				007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */,
@@ -224,6 +231,7 @@
 				007A89022695999F00B5D8D5 /* NumberTableViewCell.swift in Sources */,
 				007A89032695999F00B5D8D5 /* DateTableViewCell.swift in Sources */,
 				0062D48F2695F6FA00BCA2AB /* Configure.swift in Sources */,
+				0039B1BC26A74FB800B68907 /* TypeDependent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DateTableViewCell: UITableViewCell, Reusable, StateRepresentable, ViewHeightProviding {
+class DateTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
     static var viewHeight: CGFloat = 74
 
-    func setState(_ state: Date, animated isAnimated: Bool) {
-        textLabel?.text = DateFormatter.localizedString(from: state, dateStyle: .medium, timeStyle: .short)
+    func setDependencies(_ dependencies: Date) {
+        textLabel?.text = DateFormatter.localizedString(from: dependencies, dateStyle: .medium, timeStyle: .short)
         textLabel?.adjustsFontSizeToFitWidth = true
     }
 }

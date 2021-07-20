@@ -7,16 +7,16 @@
 
 import UIKit
 
-class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, StateRepresentable, ViewHeightProviding {
+class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, TypeDependent, ViewHeightProviding {
     static var viewHeight: CGFloat = 64
 
     private let label = configure(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func setState(_ state: (UIColor, String), animated isAnimated: Bool) {
-        contentView.backgroundColor = state.0
-        label.text = state.1
+    func setDependencies(_ dependencies: (UIColor, String)) {
+        contentView.backgroundColor = dependencies.0
+        label.text = dependencies.1
     }
 
     override init(reuseIdentifier: String?) {

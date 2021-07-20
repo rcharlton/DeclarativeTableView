@@ -13,7 +13,7 @@ struct HeaderItem {
 
 extension HeaderItem: TableViewRepresentable {
     func tableViewHeaderFooterViewProviderAt(_ indexPath: IndexPath) -> TableViewHeaderFooterViewProviding? {
-        TableViewHeaderFooterViewProvider<MyHeaderFooterView>(state: state)
+        TableViewHeaderFooterViewProvider<MyHeaderFooterView>(dependencies: state)
     }
 }
 
@@ -26,7 +26,7 @@ struct NumberItem {
 
 extension NumberItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, state: state) { _ in action() }
+        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, dependencies: state) { _ in action() }
     }
 }
 
@@ -36,7 +36,7 @@ struct MessageItem {
 
 extension MessageItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, state: state)
+        TableViewCellProvider<MessageTableViewCell>(row: indexPath.row, dependencies: state)
     }
 }
 
@@ -46,6 +46,16 @@ struct DateItem {
 
 extension DateItem: TableViewRepresentable {
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<DateTableViewCell>(row: indexPath.row, state: state)
+        TableViewCellProvider<DateTableViewCell>(row: indexPath.row, dependencies: state)
     }
 }
+
+struct SpacerItem {
+}
+
+extension SpacerItem: TableViewRepresentable {
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
+        TableViewCellProvider<SpacerTableViewCell>(row: indexPath.row)
+    }
+}
+

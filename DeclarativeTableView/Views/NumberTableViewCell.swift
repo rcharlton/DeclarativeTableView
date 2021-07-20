@@ -7,11 +7,11 @@
 
 import UIKit
 
-class NumberTableViewCell: UITableViewCell, Reusable, StateRepresentable, ViewHeightProviding {
+class NumberTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightProviding {
     static var viewHeight: CGFloat = 40
 
-    func setState(_ state: Int, animated isAnimated: Bool) {
-        textLabel?.text = "The number is \(state)"
+    func setDependencies(_ dependencies: Int) {
+        textLabel?.text = "The number is \(dependencies)"
         textLabel?.adjustsFontSizeToFitWidth = true
     }
 }

@@ -7,14 +7,10 @@
 
 import UIKit
 
-protocol ViewHeightProviding {
-    static var viewHeight: CGFloat { get }
-}
-
 struct TableViewHeaderFooterViewProvider<
-    View: ReusableTableViewHeaderFooterView & StateRepresentable & ViewHeightProviding
+    View: ReusableTableViewHeaderFooterView & TypeDependent & ViewHeightProviding
 >: TableViewHeaderFooterViewProviding {
-    let state: (Int) -> View.State
+    let dependencies: (Int) -> View.Dependencies
 
     func register(with tableView: UITableView) {
         tableView.register(View.self)
@@ -22,12 +18,11 @@ struct TableViewHeaderFooterViewProvider<
 
     func viewForSectionAt(_ section: Int, with tableView: UITableView) -> UITableViewHeaderFooterView? {
         let view = tableView.dequeueReusableHeaderFooterView(withType: View.self)
-        view.setState(state(section), animated: false)
+        view.setDependencies(dependencies(section))
         return view
     }
 
     func viewHeightForSectionAt(_ section: Int) -> CGFloat {
         View.viewHeight
     }
-
 }
