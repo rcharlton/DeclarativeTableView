@@ -1,21 +1,11 @@
 //
-//  Reusable.swift
+//  ReusableTableViewCell.swift
 //  DeclarativeTableView
 //
-//  Created by Robin Charlton on 06/07/2021.
+//  Created by Robin Charlton on 20/07/2021.
 //
 
 import UIKit
-
-protocol Reusable {
-    static var reuseIdentifier: String { get }
-}
-
-extension Reusable {
-    static var reuseIdentifier: String {
-        return String(describing: type(of: self))
-    }
-}
 
 typealias ReusableTableViewCell = UITableViewCell & Reusable
 

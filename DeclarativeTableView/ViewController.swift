@@ -13,7 +13,8 @@ class ViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private var exampleOfManualDeclarations: [TableViewSectionProviding] {
+    /// This is the underlying / internal representation.
+    private var exampleOfManualSections: [TableViewSectionProviding] {
         [
             TableViewSectionProvider(
                 headerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.orange, "Header for section \($0)") },
@@ -35,24 +36,27 @@ class ViewController: UIViewController {
         ]
     }
 
-    private var exampleOfComponentDeclarations: [TableViewSectionProviding] {
-        [
-            HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }) as TableViewRepresentable,
-            MessageItem { _ in "Here are some number rows:" },
-            NumberItem { $0.row } action: { print("Do this") },
-            NumberItem { $0.row } action: { print("Do that") },
-            NumberItem { $0.row } action: { print("Do the other") },
-            NumberItem { $0.row } action: { print("Do something") },
-            NumberItem { $0.row } action: { print("Do something else") },
-            DateItem { _ in Date() },
-            FooterItem { (UIColor.gray, "Footer for section \($0)") },
-            HeaderItem { (UIColor.orange, "Header for section \($0)") },
-            MessageItem { _ in "Another message cell" },
-            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
-            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
-            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
-        ].tableViewSectionProviders
+    private var exampleOfComponentSections: [TableViewSectionProviding] {
+        tableViewContents.tableViewSectionProviders
     }
+
+    /// This is a declarative representation.
+    private let tableViewContents: [TableViewRepresentable] = [
+        HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
+        MessageItem { _ in "Here are some number rows:" },
+        NumberItem { $0.row } action: { print("Do this") },
+        NumberItem { $0.row } action: { print("Do that") },
+        NumberItem { $0.row } action: { print("Do the other") },
+        NumberItem { $0.row } action: { print("Do something") },
+        NumberItem { $0.row } action: { print("Do something else") },
+        DateItem { _ in Date() },
+        FooterItem { (UIColor.gray, "Footer for section \($0)") },
+        HeaderItem { (UIColor.orange, "Header for section \($0)") },
+        MessageItem { _ in "Another message cell" },
+        DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+        DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+        DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+    ]
 
     private let tableViewAdapter = TableViewAdapter()
 
@@ -60,8 +64,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
 //        tableViewAdapter.sections = exampleOfManualDeclarations
-        tableViewAdapter.sections = exampleOfComponentDeclarations
-        tableViewAdapter.register(with: tableView)
+//        tableViewAdapter.sections = tableViewContents.tableViewSectionProviders
+        tableViewAdapter.setContents(tableViewContents)
+        tableViewAdapter.tableView = tableView
 
         view.addSubview(tableView)
 
@@ -71,6 +76,14 @@ class ViewController: UIViewController {
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor)
         ])
+    }
+
+}
+
+extension TableViewAdapter {
+
+    func setContents(_ contents: [TableViewRepresentable]) {
+        self.sections = contents.tableViewSectionProviders
     }
 
 }

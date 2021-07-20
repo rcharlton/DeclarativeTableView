@@ -8,9 +8,20 @@
 import UIKit
 
 class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
-    var sections: [TableViewSectionProviding] = []
+    var sections: [TableViewSectionProviding] = [] {
+        didSet {
+            tableView?.reloadData()
+        }
+    }
 
-    func register(with tableView: UITableView) {
+    var tableView: UITableView? {
+        didSet {
+            guard let tableView = self.tableView else { return }
+            register(with: tableView)
+        }
+    }
+
+    private func register(with tableView: UITableView) {
         tableView.dataSource = self
         tableView.delegate = self
         sections.forEach { $0.register(with: tableView) }
