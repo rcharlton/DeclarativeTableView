@@ -11,6 +11,7 @@ class MessageTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeight
     static var viewHeight: CGFloat = 50
 
     func setDependencies(_ dependencies: String) {
+        contentView.backgroundColor = .systemPink
         textLabel?.text = dependencies
         textLabel?.adjustsFontSizeToFitWidth = true
     }

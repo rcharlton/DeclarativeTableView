@@ -40,6 +40,12 @@ extension MessageItem: TableViewRepresentable {
     }
 }
 
+extension MessageItem: CollectionViewRepresentable {
+    func collectionViewCellProviderAt(_ indexPath: IndexPath) -> CollectionViewCellProviding? {
+        CollectionViewCellProvider<MessageCollectionViewCell>(row: indexPath.row, dependencies: state)
+    }
+}
+
 struct DateItem {
     let state: (IndexPath) -> Foundation.Date
 }
@@ -59,3 +65,12 @@ extension SpacerItem: TableViewRepresentable {
     }
 }
 
+struct CarouselItem {
+    let contents: (IndexPath) -> [CollectionViewRepresentable]
+}
+
+extension CarouselItem: TableViewRepresentable {
+    func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
+        TableViewCellProvider<CarouselTableViewCell>(row: indexPath.row, dependencies: contents)
+    }
+}

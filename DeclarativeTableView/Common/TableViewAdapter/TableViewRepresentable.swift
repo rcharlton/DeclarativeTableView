@@ -47,8 +47,8 @@ extension Array where Element == TableViewRepresentable {
                 }
             }
 
-            if let incomingCell = component.tableViewCellProviderAt(indexPath) {
-                cells.append(incomingCell)
+            if let cell = component.tableViewCellProviderAt(indexPath) {
+                cells.append(cell)
             }
         }
 
@@ -63,5 +63,11 @@ extension Array where Element == TableViewRepresentable {
         }
 
         return sections
+    }
+}
+
+extension TableViewAdapter {
+    func setContents(_ contents: [TableViewRepresentable]) {
+        self.sections = contents.tableViewSectionProviders
     }
 }

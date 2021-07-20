@@ -42,24 +42,45 @@ class ViewController: UIViewController {
     }
 
     /// This is a declarative representation.
-    private let tableViewContents: [TableViewRepresentable] = [
-        HeaderItem { (UIColor.orange, "Header for section \($0)") },
-        MessageItem { _ in "Here are some number rows:" },
-        SpacerItem(),
-        NumberItem { $0.row } action: { print("Do this") },
-        NumberItem { $0.row } action: { print("Do that") },
-        NumberItem { $0.row } action: { print("Do the other") },
-        NumberItem { $0.row } action: { print("Do something") },
-        NumberItem { $0.row } action: { print("Do something else") },
-        SpacerItem(),
-        DateItem { _ in Date() },
-        FooterItem { (UIColor.gray, "Footer for section \($0)") },
-        HeaderItem { (UIColor.orange, "Header for section \($0)") },
-        MessageItem { _ in "Here are some date rows:" },
-        DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
-        DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
-        DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
-    ]
+    private let tableViewContents: [TableViewRepresentable] = {
+        let carouselItems: [CollectionViewRepresentable] = [
+            MessageItem { "CELL \($0.row)" },
+            MessageItem { "CELL \($0.row)" },
+            MessageItem { "CELL \($0.row)" },
+        ]
+
+        return [
+            HeaderItem { (UIColor.orange, "HEADER FOR SECTION \($0)") },
+            CarouselItem { _ in carouselItems },
+            MessageItem { _ in "Here are some number rows:" },
+            SpacerItem(),
+            NumberItem { $0.row } action: { print("Do this") },
+            NumberItem { $0.row } action: { print("Do that") },
+            NumberItem { $0.row } action: { print("Do the other") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something else") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something") },
+            SpacerItem(),
+            DateItem { _ in Date() },
+            FooterItem { (UIColor.gray, "Footer for section \($0)") },
+            HeaderItem { (UIColor.orange, "HEADER FOR SECTION \($0)") },
+            MessageItem { _ in "Here are some date rows:" },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+            DateItem { Date().advanced(by: Double($0.row) * 24 * 60 * 60) },
+        ]
+    }()
 
     private let tableViewAdapter = TableViewAdapter()
 
@@ -79,14 +100,6 @@ class ViewController: UIViewController {
             view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor)
         ])
-    }
-
-}
-
-extension TableViewAdapter {
-
-    func setContents(_ contents: [TableViewRepresentable]) {
-        self.sections = contents.tableViewSectionProviders
     }
 
 }

@@ -8,10 +8,11 @@
 import UIKit
 
 class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, TypeDependent, ViewHeightProviding {
-    static var viewHeight: CGFloat = 64
+    static var viewHeight: CGFloat = 80
 
     private let label = configure(UILabel()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.font = .systemFont(ofSize: 18, weight: .medium)
     }
 
     func setDependencies(_ dependencies: (UIColor, String)) {

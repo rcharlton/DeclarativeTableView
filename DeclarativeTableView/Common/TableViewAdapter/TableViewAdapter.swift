@@ -8,16 +8,18 @@
 import UIKit
 
 class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
-    var sections: [TableViewSectionProviding] = [] {
-        didSet {
-            tableView?.reloadData()
-        }
-    }
-
     var tableView: UITableView? {
         didSet {
             guard let tableView = self.tableView else { return }
             register(with: tableView)
+        }
+    }
+
+    var sections: [TableViewSectionProviding] = [] {
+        didSet {
+            guard let tableView = self.tableView else { return }
+            register(with: tableView)
+            tableView.reloadData()
         }
     }
 
@@ -44,7 +46,8 @@ class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        sections[indexPath.section].cellForRowAt(indexPath, with: tableView) ?? MessageTableViewCell()
+        sections[indexPath.section].cellForRowAt(indexPath, with: tableView)
+            ?? WarningTableViewCell(at: indexPath)
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

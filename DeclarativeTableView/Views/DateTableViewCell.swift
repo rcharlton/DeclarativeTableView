@@ -11,6 +11,7 @@ class DateTableViewCell: UITableViewCell, Reusable, TypeDependent, ViewHeightPro
     static var viewHeight: CGFloat = 74
 
     func setDependencies(_ dependencies: Date) {
+        contentView.backgroundColor = .systemTeal
         textLabel?.text = DateFormatter.localizedString(from: dependencies, dateStyle: .medium, timeStyle: .short)
         textLabel?.adjustsFontSizeToFitWidth = true
     }
