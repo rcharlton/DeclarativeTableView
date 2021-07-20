@@ -43,4 +43,8 @@ class TableViewAdapter: NSObject, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         sections[section].footerViewHeightForSectionAt(section)
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        sections[indexPath.section].didSelectRowAt(indexPath)
+    }
 }

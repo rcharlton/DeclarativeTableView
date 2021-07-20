@@ -9,16 +9,27 @@ import UIKit
 
 struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable>: TableViewCellProviding {
     let rows: ClosedRange<Int>
-    
+
     let state: (IndexPath) -> Cell.State
 
-    init(rows: ClosedRange<Int>, state: @escaping (IndexPath) -> Cell.State) {
+    let action: (IndexPath) -> Void
+
+    init(
+        rows: ClosedRange<Int>,
+        state: @escaping (IndexPath) -> Cell.State,
+        action: @escaping (IndexPath) -> Void = { _ in }
+    ) {
         self.rows = rows
         self.state = state
+        self.action = action
     }
 
-    init(row: Int, state: @escaping (IndexPath) -> Cell.State) {
-        self.init(rows: (row...row), state: state)
+    init(
+        row: Int,
+        state: @escaping (IndexPath) -> Cell.State,
+        action: @escaping (IndexPath) -> Void = { _ in }
+    ) {
+        self.init(rows: (row...row), state: state, action: action)
     }
 
     func register(with tableView: UITableView) {
@@ -30,4 +41,9 @@ struct TableViewCellProvider<Cell: ReusableTableViewCell & StateRepresentable>: 
         cell.setState(state(indexPath), animated: false)
         return cell
     }
+
+    func didSelectRowAt(_ indexPath: IndexPath) {
+        action(indexPath)
+    }
+
 }

@@ -19,9 +19,10 @@ typealias FooterItem = HeaderItem
 
 struct NumberItem: TableViewRepresentable {
     let state: (IndexPath) -> Int
+    let action: () -> Void
 
     func tableViewCellProviderAt(_ indexPath: IndexPath) -> TableViewCellProviding? {
-        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, state: state)
+        TableViewCellProvider<NumberTableViewCell>(row: indexPath.row, state: state) { _ in action() }
     }
 }
 

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
                 footerViewProvider: TableViewHeaderFooterViewProvider<MyHeaderFooterView>{ (UIColor.gray, "Footer for section \($0)") },
                 cellProviders: [
                     TableViewCellProvider<MessageTableViewCell>(row: 0) { _ in "Here are some number rows:" },
-                    TableViewCellProvider<NumberTableViewCell>(rows: 1...20) { $0.row },
+                    TableViewCellProvider<NumberTableViewCell>(rows: 1...20) { $0.row } action: { print("Action", $0) },
                     TableViewCellProvider<DateTableViewCell>(row: 21) { _ in Date() }
                 ]
             ),
@@ -39,11 +39,11 @@ class ViewController: UIViewController {
         [
             HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }) as TableViewRepresentable,
             MessageItem(state: { _ in "Here are some number rows:" }),
-            NumberItem(state: { $0.row }),
-            NumberItem(state: { $0.row }),
-            NumberItem(state: { $0.row }),
-            NumberItem(state: { $0.row }),
-            NumberItem(state: { $0.row }),
+            NumberItem { $0.row } action: { print("Do this") },
+            NumberItem { $0.row } action: { print("Do that") },
+            NumberItem { $0.row } action: { print("Do the other") },
+            NumberItem { $0.row } action: { print("Do something") },
+            NumberItem { $0.row } action: { print("Do something else") },
             DateItem(state: { _ in Date() }),
             FooterItem(state: { (UIColor.gray, "Footer for section \($0)") }),
             HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
