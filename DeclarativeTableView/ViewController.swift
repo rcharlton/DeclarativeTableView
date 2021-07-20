@@ -5,7 +5,6 @@
 //  Created by Robin Charlton on 06/07/2021.
 //
 
-import Bricolage
 import UIKit
 
 class ViewController: UIViewController {
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
 
     private var exampleOfComponentDeclarations: [TableViewSectionProviding] {
         [
-            HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }),
+            HeaderItem(state: { (UIColor.orange, "Header for section \($0)") }) as TableViewRepresentable,
             MessageItem(state: { _ in "Here are some number rows:" }),
             NumberItem(state: { $0.row }),
             NumberItem(state: { $0.row }),

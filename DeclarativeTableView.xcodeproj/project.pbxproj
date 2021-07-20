@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0054ED5B26A6E6B200992B61 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054ED5A26A6E6B200992B61 /* Items.swift */; };
 		0062D48F2695F6FA00BCA2AB /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0062D48E2695F6FA00BCA2AB /* Configure.swift */; };
 		007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */; };
 		007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */; };
@@ -24,10 +25,11 @@
 		007A89182695BC6000B5D8D5 /* TableViewSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */; };
 		007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */; };
 		007A89212695D90800B5D8D5 /* MyHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */; };
-		00A2E6B12695F024005E1AD1 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A2E6B02695F024005E1AD1 /* Component.swift */; };
+		00A2E6B12695F024005E1AD1 /* TableViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A2E6B02695F024005E1AD1 /* TableViewRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0054ED5A26A6E6B200992B61 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		0062D48E2695F6FA00BCA2AB /* Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		007A88D82694BF2C00B5D8D5 /* DeclarativeTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeclarativeTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 		007A89172695BC6000B5D8D5 /* TableViewSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionProvider.swift; sourceTree = "<group>"; };
 		007A891B2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderFooterViewProvider.swift; sourceTree = "<group>"; };
 		007A89202695D90800B5D8D5 /* MyHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeaderFooterView.swift; sourceTree = "<group>"; };
-		00A2E6B02695F024005E1AD1 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		00A2E6B02695F024005E1AD1 /* TableViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,8 @@
 			children = (
 				007A88E92694BF2E00B5D8D5 /* Info.plist */,
 				007A88DB2694BF2C00B5D8D5 /* AppDelegate.swift */,
-				00A2E6B02695F024005E1AD1 /* Component.swift */,
+				00A2E6B02695F024005E1AD1 /* TableViewRepresentable.swift */,
+				0054ED5A26A6E6B200992B61 /* Items.swift */,
 				007A88DD2694BF2C00B5D8D5 /* SceneDelegate.swift */,
 				007A88DF2694BF2C00B5D8D5 /* ViewController.swift */,
 				007A88E42694BF2E00B5D8D5 /* Assets.xcassets */,
@@ -194,13 +197,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				007A88FC2694FF7100B5D8D5 /* StateRepresentable.swift in Sources */,
-				00A2E6B12695F024005E1AD1 /* Component.swift in Sources */,
+				00A2E6B12695F024005E1AD1 /* TableViewRepresentable.swift in Sources */,
 				007A88F52694C89800B5D8D5 /* Reusable.swift in Sources */,
 				007A88E02694BF2C00B5D8D5 /* ViewController.swift in Sources */,
 				007A88DC2694BF2C00B5D8D5 /* AppDelegate.swift in Sources */,
 				007A88F82694C8C100B5D8D5 /* MessageTableViewCell.swift in Sources */,
 				007A890D2695B07300B5D8D5 /* TableViewAdapter.swift in Sources */,
 				007A89102695B0F800B5D8D5 /* TableViewCellProvider.swift in Sources */,
+				0054ED5B26A6E6B200992B61 /* Items.swift in Sources */,
 				007A89212695D90800B5D8D5 /* MyHeaderFooterView.swift in Sources */,
 				007A88DE2694BF2C00B5D8D5 /* SceneDelegate.swift in Sources */,
 				007A891C2695C96D00B5D8D5 /* TableViewHeaderFooterViewProvider.swift in Sources */,

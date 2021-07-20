@@ -5,7 +5,6 @@
 //  Created by Robin Charlton on 07/07/2021.
 //
 
-import Bricolage
 import UIKit
 
 class MyHeaderFooterView: UITableViewHeaderFooterView, Reusable, StateRepresentable, ViewHeightProviding {
